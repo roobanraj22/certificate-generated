@@ -1,45 +1,52 @@
-async function generateCertificate() {
+document.getElementById("generateBtn").addEventListener("click", () => {
   const name = document.getElementById("nameInput").value.trim();
   const course = document.getElementById("courseInput").value.trim();
-  const certName = document.getElementById("certName");
-  const certCourse = document.getElementById("certCourse");
-  const certificate = document.getElementById("certificate");
-  const downloadBtn = document.getElementById("downloadBtn");
+  const cert = document.getElementById("certificate");
   const date = document.getElementById("date");
+  const downloadBtn = document.getElementById("downloadBtn");
 
   if (!name || !course) {
-    alert("Please fill in all fields!");
+    alert("Please enter both name and course!");
     return;
   }
 
-  certName.textContent = name;
-  certCourse.textContent = course;
-  date.textContent = new Date().toLocaleDateString();
+  document.getElementById("certName").innerText = name;
+  document.getElementById("certCourse").innerText = course;
+  date.innerText = new Date().toLocaleDateString();
 
-  certificate.style.display = "block";
+  cert.style.display = "block";
   downloadBtn.style.display = "inline-block";
 
-  // Smooth scroll to certificate
-  certificate.scrollIntoView({ behavior: "smooth" });
-}
+  cert.scrollIntoView({ behavior: "smooth" });
+});
 
-async function downloadPDF() {
-  const certificate = document.getElementById("certificate");
+document.getElementById("downloadBtn").addEventListener("click", async () => {
+  const cert = document.getElementById("certificate");
   const { jsPDF } = window.jspdf;
 
-  // Take screenshot of the certificate
-  const canvas = await html2canvas(certificate, {
-    scale: 2,           // Higher resolution
-    useCORS: true,      // Allow logo images
-    logging: false,
+  // Render high-resolution image
+  const canvas = await html2canvas(cert, {
+    scale: 3,
+    useCORS: true,
+    backgroundColor: "#fff"
   });
 
-  const imgData = canvas.toDataURL("image/png");
+  const imgData = canvas.toDataURL("image/png", 1.0);
+  const pdf = new jsPDF("landscape", "mm", "a4");
 
-  // Create landscape PDF
-  const pdf = new jsPDF("landscape", "pt", [canvas.width, canvas.height]);
-  pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+  const pdfWidth = pdf.internal.pageSize.getWidth();
+  const pdfHeight = pdf.internal.pageSize.getHeight();
 
-  // Trigger download
+  const imgWidth = canvas.width;
+  const imgHeight = canvas.height;
+  const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+
+  const finalWidth = imgWidth * ratio;
+  const finalHeight = imgHeight * ratio;
+
+  const x = (pdfWidth - finalWidth) / 2;
+  const y = (pdfHeight - finalHeight) / 2;
+
+  pdf.addImage(imgData, "PNG", x, y, finalWidth, finalHeight);
   pdf.save("Certificate.pdf");
-}
+});
