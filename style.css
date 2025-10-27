@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Playfair+Display:wght@600&display=swap");
+
+body {
+  background: radial-gradient(circle at top, #2b1055, #7597de);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+.main-container {
+  text-align: center;
+  width: 90%;
+  max-width: 900px;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  animation: fadeIn 1.2s ease-in;
+}
+
+input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  width: 80%;
+  max-width: 400px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #ffb400;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #ffd86b;
+}
+
+.certificate {
+  display: none;
+  background: #fffdf5;
+  color: #000;
+  border: 10px solid #d4af37;
+  border-radius: 20px;
+  padding: 40px;
+  margin-top: 20px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  animation: zoomIn 1s ease;
+}
+
+.certificate .logo {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.cert-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  color: #b8860b;
+}
+
+.cert-body h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  color: #222;
+  margin: 10px 0;
+}
+
+.cert-body h2 {
+  font-family: "Playfair Display", serif;
+  color: #555;
+  margin: 10px 0;
+}
+
+.cert-footer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.sign, .date {
+  text-align: center;
+}
+
+#downloadBtn {
+  display: none;
+  background: linear-gradient(45deg, #00dbde, #fc00ff);
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+#downloadBtn:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes zoomIn {
+  from {opacity: 0; transform: scale(0.8);}
+  to {opacity: 1; transform: scale(1);}
+}
