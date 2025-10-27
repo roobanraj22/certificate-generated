@@ -3,49 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Professional Certificate Generator</title>
+  <title>Certificate Generator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="main-container">
-    <div class="form-container">
-      <h1>🎓 Certificate Generator</h1>
-      <p>Enter your details to create a professional certificate.</p>
-      <input type="text" id="nameInput" placeholder="Enter your full name" />
-      <input type="text" id="courseInput" placeholder="Enter course or project name" />
-      <button onclick="generateCertificate()">Generate Certificate</button>
-    </div>
-
-    <div id="certificate" class="certificate">
-      <div class="cert-header">
-        <img src="iso-16603-2004-certification-500x500.webp" class="logo" />
-        <h2>Certificate of Achievement</h2>
-      </div>
-
-      <div class="cert-body">
-        <p>This is proudly presented to</p>
-        <h1 id="certName">Your Name</h1>
-        <p>for successfully completing</p>
-        <h2 id="certCourse">[Course Name]</h2>
-        <p>with excellence and dedication.</p>
-      </div>
-
-      <div class="cert-footer">
-        <div class="sign">
-          <h3>Roobanraj</h3>
-          <p>_______________________</p>
-          <h4>Authorized Signature</h4>
-        </div>
-        <div class="date">
-          <p>Date: <span id="date"></span></p>
-        </div>
-      </div>
-    </div>
-
-    <button id="downloadBtn" onclick="downloadPDF()">📄 Download PDF</button>
+  <div class="form-box">
+    <h1>🎓 Certificate Generator</h1>
+    <input type="text" id="nameInput" placeholder="Enter your full name" />
+    <input type="text" id="courseInput" placeholder="Enter your project/course name" />
+    <button id="generateBtn">Generate Certificate</button>
   </div>
 
-  <!-- ✅ Correct CDN versions -->
+  <div id="certificate" class="certificate">
+    <h2>Certificate of Achievement</h2>
+    <p>This certifies that</p>
+    <h1 id="certName">Your Name</h1>
+    <p>has successfully completed</p>
+    <h2 id="certCourse">[Course Name]</h2>
+    <p>with outstanding performance.</p>
+    <div class="footer">
+      <p>Date: <span id="date"></span></p>
+      <p>Signature: __________________</p>
+    </div>
+  </div>
+
+  <button id="downloadBtn">📄 Download Certificate</button>
+
+  <!-- ✅ JS Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="model.js"></script>
